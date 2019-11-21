@@ -70,6 +70,10 @@ const GlobalStyles = () => {
         code {
           font-family: ${theme.code};
         }
+        ::selection {
+          background-color: ${theme.primary};
+          color: white;
+        }
       `}
     />
   )

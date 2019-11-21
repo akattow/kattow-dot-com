@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `kattow.com`,
-    description: `Personal site of a front-end developer, UX designer, and freelance illustrator. 🦄`,
+    description: `UI developer, accessibility advocate, and freelance illustrator. 🦄`,
     author: `@akattow`,
     twitter: `@akattow`,
-    instagram: `partly_stars`,
+    instagram: `@partlystars`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
