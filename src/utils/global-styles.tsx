@@ -1,6 +1,6 @@
 import React from "react"
 import { Global } from "@emotion/core"
-import { fontFamily } from "styled-system"
+import "./utility.css"
 
 const GlobalStyles = () => {
   return (
@@ -9,6 +9,9 @@ const GlobalStyles = () => {
         "*": {
           boxSizing: `border-box`,
           margin: 0,
+          "&:focus": {
+            outlineColor: `${theme.colors.secondary}`,
+          },
         },
         /* More info: https://bit.ly/2PsCnzk */
         "* + *": {
@@ -40,7 +43,8 @@ const GlobalStyles = () => {
             backgroundRepeat: `no-repeat`,
             backgroundPosition: `left 0 bottom -25%`,
             transition: `200ms`,
-            "&:hover": {
+            "&:hover, &:focus": {
+              outline: `none`,
               backgroundPosition: `100% 100%`,
               backgroundSize: `100% 100%`,
               color: theme.colors.background,
