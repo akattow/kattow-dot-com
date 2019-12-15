@@ -1,35 +1,29 @@
-import { Link } from "gatsby"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import React from "react"
-import { useTheme } from "emotion-theming"
-import { Theme } from "../../utils/theme"
-import css from "@emotion/css"
-import styled from "../../utils/theme"
-import { setPadding } from "./shared"
+import { Link } from "gatsby"
 
-const StyledHeader = styled.header`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  > * {
-    margin-top: 0;
-  }
-`
+const StyledHeader: React.FC = ({ children }) => (
+  <header
+    sx={{
+      px: [4, 5, 6],
+      py: 3,
+      display: "flex",
+      justifyContent: "space-between",
+      "> *": {
+        mt: 0,
+      },
+    }}
+  >
+    {children}
+  </header>
+)
 
 const Header: React.FC = () => {
-  const theme = useTheme<Theme>()
   return (
-    <StyledHeader css={setPadding}>
+    <StyledHeader>
       <div>
-        <Link
-          to="/"
-          css={css`
-            background-position: left 0 bottom -40%;
-            text-transform: lowercase;
-          `}
-        >
-          hi, I'm Kat Tow
-        </Link>
+        <Link to="/">hi, I'm kat tow</Link>
       </div>
       <div>
         <Link to="/about">about me</Link>

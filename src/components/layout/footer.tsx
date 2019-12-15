@@ -1,16 +1,23 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+
 import React from "react"
-import { setPadding } from "./shared"
-import { css } from "@emotion/core"
-import { Theme } from "../../utils/theme"
+
+const StyledFooter: React.FC = ({ children }) => (
+  <footer
+    sx={{
+      px: [4, 5, 6],
+      py: 3,
+      fontSize: 0,
+    }}
+  >
+    {children}
+  </footer>
+)
 
 const Footer = () => {
   return (
-    <footer
-      css={(theme: Theme) => css`
-        ${setPadding(theme)};
-        font-size: 0.8rem;
-      `}
-    >
+    <StyledFooter>
       © {new Date().getFullYear()} | built with
       {` `}
       <a
@@ -20,7 +27,7 @@ const Footer = () => {
       >
         Gatsby
       </a>
-    </footer>
+    </StyledFooter>
   )
 }
 

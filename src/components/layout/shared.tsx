@@ -1,23 +1,15 @@
-import styled, { Theme } from "../../utils/theme"
-import css from "@emotion/css"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 
-export const setPadding = (theme: Theme) => css`
-  padding: 1rem ${theme.gutters.default};
-  ${theme.mq.tablet} {
-    padding: 1rem ${theme.gutters.tablet};
-  }
-  ${theme.mq.desktop} {
-    padding: 1rem ${theme.gutters.desktop};
-  }
-  ${theme.mq.xl} {
-    padding: 1rem ${theme.gutters.xl};
-  }
-`
-
-export const Section = styled.section`
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  &:last-of-type {
-    padding-bottom: 0;
-  }
-`
+export const Section: React.FC = ({ children }) => (
+  <section
+    sx={{
+      py: 5,
+      "&:last-of-type": {
+        pb: 0,
+      },
+    }}
+  >
+    {children}
+  </section>
+)

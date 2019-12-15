@@ -1,17 +1,22 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+
+import { useStaticQuery, graphql } from "gatsby"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
-import { string } from "prop-types"
 
 interface ISEO {
-  lang?: string
+  lang: string
   meta?: []
   pageDescription?: string
   pageTitle: string
 }
 
-const SEO: React.FC<ISEO> = ({ pageDescription, lang, meta, pageTitle }) => {
+const SEO: React.FC<ISEO> = ({
+  pageDescription,
+  lang = "en",
+  meta,
+  pageTitle,
+}) => {
   const { title, description, author } = useSiteMetadata()
 
   const metaDescription = pageDescription !== "" ? pageDescription : description
@@ -59,13 +64,6 @@ const SEO: React.FC<ISEO> = ({ pageDescription, lang, meta, pageTitle }) => {
       ]}
     />
   )
-}
-
-SEO.defaultProps = {
-  pageDescription: "",
-  lang: "en",
-  meta: [],
-  pageTitle: "",
 }
 
 export default SEO
