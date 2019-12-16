@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import { Link } from "gatsby"
+import useSiteMetadata from "../hooks/useSiteMetadata"
+
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
 import SelfPortrait from "../components/self-portrait"
@@ -35,28 +36,36 @@ const ImageWrapper: React.FC = ({ children }) => (
   </div>
 )
 
-const IndexPage: React.FC = () => (
-  <Layout>
-    <SEO pageTitle="Home" lang="en" />
-    <StyledHero>
-      <div
-        sx={{
-          pt: ["inherit", "inherit", "inherit", "2rem"],
-        }}
-      >
-        <h1>Hi, I'm Kat</h1>
-        <p>I'm a front-end developer, UX designer, and illustrator.</p>
-        <p>
-          This site has a new look coming for 2020, but there are{" "}
-          <Link to="/about">other ways</Link> to follow me in the meantime.
-        </p>
-      </div>
+const IndexPage: React.FC = () => {
+  const data = useSiteMetadata()
 
-      <ImageWrapper>
-        <SelfPortrait />
-      </ImageWrapper>
-    </StyledHero>
-  </Layout>
-)
+  return (
+    <Layout>
+      <SEO pageTitle="Home" />
+      <StyledHero>
+        <div
+          sx={{
+            pt: ["inherit", "inherit", "inherit", "2rem"],
+          }}
+        >
+          <h1>Hi, I'm Kat</h1>
+          <p>I'm a web developer and illustrator in Milwaukee, WI.</p>
+          <p>
+            I like to <a href={`https://twitter.com/${data.twitter}`}>tweet</a>,
+            write, and speak about web accessibility.
+          </p>
+          <p>
+            I'm also proud to be a leader of the Milwaukee chapter of{" "}
+            <a href="https://wepivot.org/">We Pivot</a>.
+          </p>
+        </div>
+
+        <ImageWrapper>
+          <SelfPortrait />
+        </ImageWrapper>
+      </StyledHero>
+    </Layout>
+  )
+}
 
 export default IndexPage

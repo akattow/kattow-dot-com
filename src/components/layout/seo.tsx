@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import useSiteMetadata from "../../hooks/useSiteMetadata"
 
 interface ISEO {
-  lang: string
+  lang?: string | "en"
   meta?: []
   pageDescription?: string
   pageTitle: string

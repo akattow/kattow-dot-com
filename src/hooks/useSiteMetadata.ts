@@ -10,6 +10,8 @@ const useSiteMetadata = () => {
           author
           twitter
           instagram
+          codepen
+          linkedin
         }
       }
     }

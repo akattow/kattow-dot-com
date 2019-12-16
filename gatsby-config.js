@@ -3,8 +3,10 @@ module.exports = {
     title: `kattow.com`,
     description: `UI developer, accessibility advocate, and freelance illustrator. 🦄`,
     author: `@akattow`,
-    twitter: `@akattow`,
-    instagram: `@partlystars`,
+    twitter: `akattow`,
+    instagram: `partlystars`,
+    linkedin: `kattow`,
+    codepen: `kattow88`,
   },
   plugins: [
     `gatsby-plugin-emotion`,

@@ -27,13 +27,16 @@ const GlobalStyles = () => {
             marginTop: 0,
           },
           "h1, h2, h3, h4, h5, h6": {
-            fontFamily: theme.fonts.header,
+            fontFamily: theme.fonts.heading,
             color: theme.colors.secondary,
             lineHeight: theme.lineHeights.heading,
             marginBottom: theme.space[4],
             "+ *": {
               marginTop: theme.space[3],
             },
+          },
+          "h3, h5": {
+            color: theme.colors.primary,
           },
           a: {
             color: theme.colors.text,
