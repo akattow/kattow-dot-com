@@ -21,7 +21,7 @@ const Layout: React.FC = ({ children }) => {
       <main
         id="main-content"
         sx={{
-          px: [4, 5, 6],
+          px: [3, 4, 5, 6],
           py: 3,
         }}
       >

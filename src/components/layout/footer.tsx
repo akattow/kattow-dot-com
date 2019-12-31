@@ -13,9 +13,8 @@ import useSiteMetadata from "../../hooks/useSiteMetadata"
 const StyledFooter: React.FC = ({ children }) => (
   <footer
     sx={{
-      px: [4, 5, 6],
+      px: [3, 4, 5, 6],
       py: 3,
-      fontSize: 1,
       "> *": {
         mx: 2,
         "&:first-child": {

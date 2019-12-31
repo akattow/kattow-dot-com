@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 const StyledHeader: React.FC = ({ children }) => (
   <header
     sx={{
-      px: [4, 5, 6],
+      px: [3, 4, 5, 6],
       py: 3,
       display: "flex",
       justifyContent: "space-between",
