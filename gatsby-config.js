@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `kattow.com`,
-    description: `UI developer, accessibility advocate, and freelance illustrator. 🦄`,
-    author: `@akattow`,
+    description: `UI developer and accessibility advocate`,
+    author: `Kat Tow`,
     twitter: `akattow`,
     instagram: `partlystars`,
     linkedin: `kattow`,
@@ -16,7 +16,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     {
-      resolve: "gatsby-plugin-mdx",
+      resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
           default: require.resolve("./src/components/layout/index.tsx"),
