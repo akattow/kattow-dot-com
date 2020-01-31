@@ -6,6 +6,7 @@ import useSiteMetadata from "../hooks/useSiteMetadata"
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
 import SelfPortrait from "../components/self-portrait"
+import { ExternalLink } from "../components/utils"
 
 const StyledHero: React.FC = ({ children }) => (
   <div
@@ -51,12 +52,19 @@ const IndexPage: React.FC = () => {
           <h1>Hi, I'm Kat</h1>
           <p>I'm a web developer and illustrator in Milwaukee, WI.</p>
           <p>
-            I like to <a href={`https://twitter.com/${data.twitter}`}>tweet</a>,
-            write, and speak about web accessibility.
+            I like to{" "}
+            <ExternalLink target={`https://twitter.com/${data.twitter}`}>
+              tweet
+            </ExternalLink>
+            {", "}
+            <ExternalLink target={`https://dev.to/${data.twitter}`}>
+              write
+            </ExternalLink>
+            , and speak about web accessibility.
           </p>
           <p>
             I'm also proud to be a leader of the Milwaukee chapter of{" "}
-            <a href="https://wepivot.org/">We Pivot</a>.
+            <ExternalLink target="https://wepivot.org/">We Pivot</ExternalLink>.
           </p>
         </div>
 
