@@ -6,7 +6,7 @@ module.exports = {
     twitter: `akattow`,
     instagram: `partlystars`,
     linkedin: `kattow`,
-    codepen: `kattow88`,
+    codepen: `kattow`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
