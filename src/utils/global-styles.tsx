@@ -35,6 +35,9 @@ const GlobalStyles = () => {
               marginTop: theme.space[3],
             },
           },
+          h1: {
+            fontSize: "2em",
+          },
           "h3, h5": {
             color: theme.colors.primary,
           },

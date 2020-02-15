@@ -12,13 +12,21 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <SEO pageTitle="About me" />
+      <SEO pageTitle="About" />
       <Section>
         <h1>about me</h1>
         <p>
           I’m a web developer in Milwaukee, WI. I'm passionate about web
           accessibility. I like building things with React. I enjoy vanilla CSS,
-          Sass, and CSS-in-JS (💅 and/or 👩‍🎤).
+          Sass, and CSS-in-JS (
+          <span role="img" aria-label="styled components">
+            💅
+          </span>{" "}
+          and/or{" "}
+          <span role="img" aria-label="Emotion">
+            👩‍🎤
+          </span>
+          ).
         </p>
         <p>
           Find me <a href={`https://twitter.com/${data.twitter}`}>on Twitter</a>{" "}
