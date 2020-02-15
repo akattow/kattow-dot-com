@@ -68,14 +68,7 @@ const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
       </span>
       <span>{post.timeToRead} min read</span>
       <span>
-        <Link
-          to={post.slug}
-          sx={{
-            display: "inline-block",
-          }}
-        >
-          read this post &rarr;
-        </Link>
+        <Link to={post.slug}>read this post &rarr;</Link>
       </span>
     </div>
   </article>

@@ -47,13 +47,13 @@ const Speak: React.FC = () => {
         <h2>upcoming speaking</h2>
         <SecretUl>
           {futureEvents.map((event: Event) => (
-            <SpeakingEvent event={event} />
+            <SpeakingEvent event={event} key={event.startDate} />
           ))}
         </SecretUl>
         <h2>past speaking</h2>
         <SecretUl>
           {pastEvents.map((event: Event) => (
-            <SpeakingEvent event={event} />
+            <SpeakingEvent event={event} key={event.startDate} />
           ))}
         </SecretUl>
       </Section>
