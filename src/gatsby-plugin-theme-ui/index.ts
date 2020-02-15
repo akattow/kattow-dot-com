@@ -1,5 +1,3 @@
-import { fontFamily } from "styled-system"
-
 export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   breakpoints: ["0", "40em", "52em", "64em"],

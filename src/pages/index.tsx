@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
 import SelfPortrait from "../components/self-portrait"
 import { ExternalLink } from "../components/utils"
+import { Link } from "gatsby"
 
 const StyledHero: React.FC = ({ children }) => (
   <div
@@ -60,7 +61,7 @@ const IndexPage: React.FC = () => {
             <ExternalLink target={`https://dev.to/${data.twitter}`}>
               write
             </ExternalLink>
-            , and speak about web accessibility.
+            , and <Link to="/speaking">speak</Link> about web accessibility.
           </p>
           <p>
             I'm also proud to be a leader of the Milwaukee chapter of{" "}

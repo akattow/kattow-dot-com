@@ -1,0 +1,15 @@
+---
+- eventName: Milwaukee Code Camp
+  eventSite: https://www.milwaukeecodecamp.com/
+  startDate: 11-14-2019
+  location: Milwaukee, WI
+  type: Talk
+  title: "Intro to Accessibility"
+  slides: https://intro-to-accessibility.netlify.com/
+
+- eventName: Milwaukee JS
+  eventSite: https://www.meetup.com/milwaukeejs/
+  startDate: 03-31-2020
+  location: Milwaukee, WI
+  type: Talk
+  title: "Accessibility in Single-Page Applications"

@@ -14,6 +14,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -22,6 +23,13 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
         plugins: [{ resolve: "gatsby-remark-images" }],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `speaking`,
+        path: `${__dirname}/content/speaking`,
       },
     },
     {
