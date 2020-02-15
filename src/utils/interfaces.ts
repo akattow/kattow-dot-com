@@ -8,3 +8,13 @@ export interface Event {
   title: string
   slides: string
 }
+
+export interface BlogPost {
+  title: string
+  slug: string
+  publishDate: string
+  draft: boolean
+  timeToRead: number
+  image?: string
+  imageAlt?: string
+}
