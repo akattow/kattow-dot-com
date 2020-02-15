@@ -53,15 +53,8 @@ const IndexPage: React.FC = () => {
           <h1>Hi, I'm Kat</h1>
           <p>I'm a web developer and illustrator in Milwaukee, WI.</p>
           <p>
-            I like to{" "}
-            <ExternalLink target={`https://twitter.com/${data.twitter}`}>
-              tweet
-            </ExternalLink>
-            {", "}
-            <ExternalLink target={`https://dev.to/${data.twitter}`}>
-              write
-            </ExternalLink>
-            , and <Link to="/speaking">speak</Link> about web accessibility.
+            I like to <Link to="/blog">write</Link> and{" "}
+            <Link to="/speaking">speak</Link> about web accessibility.
           </p>
           <p>
             I'm also proud to be a leader of the Milwaukee chapter of{" "}

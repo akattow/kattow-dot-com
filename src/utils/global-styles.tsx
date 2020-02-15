@@ -42,6 +42,8 @@ const GlobalStyles = () => {
             color: theme.colors.primary,
           },
           a: {
+            display: `inline-block`,
+            marginTop: 0,
             color: theme.colors.text,
             textDecoration: `none`,
             backgroundImage: `linear-gradient(${theme.colors.primary}, ${theme.colors.primary})`,

@@ -26,12 +26,15 @@ const Header: React.FC = () => {
   const data = useSiteMetadata()
   return (
     <StyledHeader>
-      <div sx={{ mr: [4] }}>
-        <Link to="/">hi, I'm kat tow</Link>
-      </div>
+      <Link to="/" sx={{ mr: [4] }}>
+        hi, I'm kat tow
+      </Link>
       <nav
         sx={{
+          display: "flex",
+          flexWrap: "wrap",
           a: {
+            mt: 0,
             mr: [4],
             "&:last-of-type": {
               mr: 0,
@@ -41,9 +44,7 @@ const Header: React.FC = () => {
       >
         <Link to="/about">about me</Link>
         <Link to="/speaking">speaking</Link>
-        <ExternalLink target={`https://dev.to/${data.twitter}`}>
-          blog
-        </ExternalLink>
+        <Link to="/blog">blog</Link>
       </nav>
     </StyledHeader>
   )
