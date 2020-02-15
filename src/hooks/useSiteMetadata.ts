@@ -9,7 +9,6 @@ const useSiteMetadata = () => {
           description
           author
           twitter
-          instagram
           codepen
           linkedin
         }

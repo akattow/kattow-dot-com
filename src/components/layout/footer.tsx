@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-  faInstagram,
   faTwitter,
   faCodepen,
   faLinkedinIn,
@@ -22,6 +21,9 @@ const StyledFooter: React.FC = ({ children }) => (
         mx: [2, 3, 4, 5],
         "&:first-of-type": {
           ml: 0,
+        },
+        "&:last-of-type": {
+          mr: 0,
         },
       },
       a: {
@@ -58,10 +60,6 @@ const Footer = () => {
     {
       target: `https://linkedin.com/in/${data.linkedin}`,
       icon: faLinkedinIn,
-    },
-    {
-      target: `https://instagram.com/${data.instagram}`,
-      icon: faInstagram,
     },
   ]
 

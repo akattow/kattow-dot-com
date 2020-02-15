@@ -4,7 +4,6 @@ module.exports = {
     description: `UI developer and accessibility advocate`,
     author: `Kat Tow`,
     twitter: `akattow`,
-    instagram: `partlystars`,
     linkedin: `kattow`,
     codepen: `kattow`,
   },
