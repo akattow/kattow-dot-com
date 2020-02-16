@@ -3,12 +3,12 @@ import { graphql, useStaticQuery } from "gatsby"
 const useBlog = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(filter: { frontmatter: { draft: { eq: false } } }) {
         nodes {
           frontmatter {
             title
             slug
-            publishDate
+            publishDate(formatString: "MMM DD, YYYY")
             draft
           }
           timeToRead

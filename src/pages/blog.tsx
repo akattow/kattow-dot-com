@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import { parse, format, compareDesc } from "date-fns"
 import { BlogPost } from "../utils/interfaces"
 
 import Layout from "../components/layout"
@@ -12,24 +11,15 @@ import { Link } from "gatsby"
 
 const Blog: React.FC = () => {
   const posts: BlogPost[] = useBlog()
-    //   sort oldest to future-est
-    .sort((a: BlogPost, b: BlogPost) =>
-      compareDesc(
-        parse(a.publishDate, "MM-dd-yyyy", new Date()),
-        parse(b.publishDate, "MM-dd-yyyy", new Date())
-      )
-    )
 
   return (
     <Layout>
       <SEO pageTitle="Blog" />
       <Section>
         <h1>blog</h1>
-        {posts
-          .filter(post => !post.draft)
-          .map(post => (
-            <BlogListing post={post} key={post.slug} />
-          ))}
+        {posts.map(post => (
+          <BlogListing post={post} key={post.slug} />
+        ))}
       </Section>
     </Layout>
   )
@@ -47,7 +37,7 @@ const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
       marginTop: [5],
     }}
   >
-    <Link to={post.slug} sx={{ fontSize: [4] }}>
+    <Link to={`/blog/${post.slug}`} sx={{ fontSize: [4] }}>
       {post.title}
     </Link>
     <div
@@ -63,12 +53,7 @@ const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
         },
       }}
     >
-      <span>
-        {format(
-          parse(post.publishDate, "MM-dd-yyyy", new Date()),
-          "MMMM d, yyyy"
-        )}
-      </span>
+      <span>{post.publishDate}</span>
       <span>{post.timeToRead} min read</span>
     </div>
   </article>
