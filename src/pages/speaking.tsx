@@ -69,7 +69,7 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => (
       "> *": {
         marginTop: 0,
       },
-      marginBottom: "2em",
+      marginBottom: [4],
     }}
   >
     <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>

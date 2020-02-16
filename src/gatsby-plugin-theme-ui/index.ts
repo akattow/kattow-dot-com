@@ -6,7 +6,7 @@ export default {
     heading: "Montserrat",
     monospace: '"Fira Code", Menlo, monospace',
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64],
   fontWeights: {
     body: 400,
     heading: 600,
@@ -39,6 +39,9 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+    },
+    h2: {
+      mt: 5,
     },
   },
 }

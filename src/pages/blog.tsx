@@ -40,13 +40,16 @@ export default Blog
 const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
   <article
     sx={{
-      "> *": {
+      "*": {
         marginTop: 0,
+        marginBottom: [1],
       },
-      marginBottom: "2em",
+      marginTop: [5],
     }}
   >
-    <h2>{post.title}</h2>
+    <Link to={post.slug} sx={{ fontSize: [4] }}>
+      {post.title}
+    </Link>
     <div
       sx={{
         display: "flex",
@@ -67,9 +70,6 @@ const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
         )}
       </span>
       <span>{post.timeToRead} min read</span>
-      <span>
-        <Link to={post.slug}>read this post &rarr;</Link>
-      </span>
     </div>
   </article>
 )
