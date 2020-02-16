@@ -2,8 +2,27 @@
 import { jsx } from "theme-ui"
 import React from "react"
 import { Link } from "gatsby"
-import { ExternalLink } from "../utils"
-import useSiteMetadata from "../../hooks/useSiteMetadata"
+
+const Header: React.FC = () => (
+  <StyledHeader>
+    <Link to="/" sx={{ mr: [4] }}>
+      hi, I'm kat tow
+    </Link>
+    <Nav>
+      <Link to="/about" activeClassName="active">
+        about me
+      </Link>
+      <Link to="/speaking" activeClassName="active">
+        speaking
+      </Link>
+      <Link to="/blog" activeClassName="active">
+        blog
+      </Link>
+    </Nav>
+  </StyledHeader>
+)
+
+export default Header
 
 const StyledHeader: React.FC = ({ children }) => (
   <header
@@ -16,38 +35,37 @@ const StyledHeader: React.FC = ({ children }) => (
       "> *": {
         mt: 0,
       },
+      a: {
+        backgroundSize: "100% .5em",
+      },
     }}
   >
     {children}
   </header>
 )
 
-const Header: React.FC = () => {
-  const data = useSiteMetadata()
-  return (
-    <StyledHeader>
-      <Link to="/" sx={{ mr: [4] }}>
-        hi, I'm kat tow
-      </Link>
-      <nav
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          a: {
-            mt: 0,
-            mr: [4],
-            "&:last-of-type": {
-              mr: 0,
-            },
-          },
-        }}
-      >
-        <Link to="/about">about me</Link>
-        <Link to="/speaking">speaking</Link>
-        <Link to="/blog">blog</Link>
-      </nav>
-    </StyledHeader>
-  )
-}
-
-export default Header
+const Nav: React.FC = ({ children }) => (
+  <nav
+    sx={{
+      display: "flex",
+      flexWrap: "wrap",
+      "> *": {
+        mt: 0,
+        mr: [4],
+        "&:last-of-type": {
+          mr: 0,
+        },
+      },
+      ".active": {
+        backgroundImage: theme =>
+          `linear-gradient(${theme.colors.secondary}, ${theme.colors.secondary})`,
+        backgroundSize: "100% .6em",
+        "&:hover, &:focus": {
+          backgroundSize: "100% 100%",
+        },
+      },
+    }}
+  >
+    {children}
+  </nav>
+)

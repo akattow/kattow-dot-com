@@ -32,7 +32,7 @@ const StyledFooter: React.FC = ({ children }) => (
         "&:hover, &:focus": {
           color: theme => `${theme.colors.primary}`,
           backgroundSize: 0,
-          transform: "scale(1.2)",
+          svg: { transform: "scale(1.2)" },
         },
       },
     }}

@@ -36,19 +36,20 @@ const GlobalStyles = () => {
             },
           },
           h1: {
-            fontSize: "2em",
+            marginTop: theme.space[4],
+            fontSize: theme.fontSizes[6],
           },
           "h3, h5": {
             color: theme.colors.primary,
           },
           a: {
-            display: `inline-block`,
+            display: `inline`,
             marginTop: 0,
             color: theme.colors.text,
             textDecoration: `none`,
             backgroundImage: `linear-gradient(${theme.colors.primary}, ${theme.colors.primary})`,
-            backgroundSize: `100% .5em`,
-            backgroundRepeat: `no-repeat`,
+            backgroundSize: `100% .4em`,
+            backgroundRepeat: `repeat-x`,
             backgroundPosition: `left 0 bottom -25%`,
             transition: `200ms`,
             "&:hover, &:focus": {
