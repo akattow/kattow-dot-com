@@ -8,7 +8,6 @@ module.exports = {
     codepen: `kattow`,
   },
   plugins: [
-    `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-transformer-sharp`,
