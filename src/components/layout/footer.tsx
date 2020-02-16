@@ -66,7 +66,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       {social.map(item => (
-        <ExternalLink target={item.target}>
+        <ExternalLink target={item.target} key={item.target}>
           <FontAwesomeIcon icon={item.icon} />
         </ExternalLink>
       ))}
