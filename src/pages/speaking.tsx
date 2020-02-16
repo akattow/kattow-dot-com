@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import { parse, format, compareAsc } from "date-fns"
 import { Event } from "../utils/interfaces"
 import useSpeaking from "../hooks/useSpeaking"
 
@@ -12,25 +11,10 @@ import { SecretUl, ExternalLink } from "../components/utils"
 
 const Speak: React.FC = () => {
   const events: Event[] = useSpeaking()
-    // sort oldest to future-est
-    .sort((a: Event, b: Event) =>
-      compareAsc(
-        parse(a.startDate, "MM-dd-yyyy", new Date()),
-        parse(b.startDate, "MM-dd-yyyy", new Date())
-      )
-    )
+  const today = new Date()
 
-  const futureEvents = events.filter(
-    (event: Event) =>
-      compareAsc(parse(event.startDate, "MM-dd-yyyy", new Date()), Date.now()) >
-      0
-  )
-
-  const pastEvents = events.filter(
-    (event: Event) =>
-      compareAsc(parse(event.startDate, "MM-dd-yyyy", new Date()), Date.now()) <
-      0
-  )
+  const futureEvents = events.filter(event => new Date(event.endDate) >= today)
+  const pastEvents = events.filter(event => new Date(event.endDate) < today)
 
   return (
     <Layout>
@@ -63,19 +47,60 @@ const Speak: React.FC = () => {
 
 export default Speak
 
-const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => (
-  <li
-    sx={{
-      "> *": {
-        marginTop: 0,
-      },
-      marginBottom: [4],
-    }}
-  >
-    <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
-    <p>{event.title}</p>
-    <span>
-      {format(parse(event.startDate, "MM-dd-yyyy", new Date()), "MMMM d, yyyy")}
-    </span>
-  </li>
-)
+interface DateOptions {
+  year?: string
+  month?: string
+  day?: string
+}
+
+const getFormattedDate = (
+  date: Date,
+  options: DateOptions = { month: "long", day: "numeric" },
+  locale = "en-US"
+) => date.toLocaleDateString(locale, options)
+
+const getDateRange = (startString: string, endString: string) => {
+  const startDate = new Date(startString)
+  const endDate = new Date(endString)
+
+  startDate.setUTCHours(startDate.getTimezoneOffset() / 60)
+  endDate.setUTCHours(endDate.getTimezoneOffset() / 60)
+
+  // is multi-day?
+  const oneDayEvent = startString === endString
+
+  // span months?
+  const sameMonth = startDate.getMonth() === endDate.getMonth()
+
+  const start = getFormattedDate(startDate)
+  if (oneDayEvent)
+    return `${start}, ${getFormattedDate(startDate, { year: "numeric" })}`
+
+  if (sameMonth && !oneDayEvent)
+    return `${start}-${getFormattedDate(endDate, {
+      day: "numeric",
+    })}, ${getFormattedDate(endDate, { year: "numeric" })}`
+
+  return `${start} - ${getFormattedDate(endDate)}, ${getFormattedDate(endDate, {
+    year: "numeric",
+  })}`
+}
+
+const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
+  const date = getDateRange(event.startDate, event.endDate)
+
+  return (
+    <li
+      sx={{
+        "> *": {
+          marginTop: 0,
+        },
+        marginBottom: [4],
+      }}
+    >
+      <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
+      <p>{event.title}</p>
+      <span>{date}</span>
+    </li>
+  )
+}
