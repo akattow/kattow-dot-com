@@ -5,3 +5,5 @@
  */
 import "typeface-montserrat"
 import "typeface-nunito"
+
+require("prismjs/themes/prism-tomorrow.css")

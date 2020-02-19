@@ -69,6 +69,14 @@ const GlobalStyles = () => {
             backgroundColor: theme.colors.primary,
             color: theme.colors.background,
           },
+          // :not(pre) > code[class*="language-"], pre[class*="language-"]
+          "code.language-text": {
+            backgroundColor: "transparent",
+            color: theme.colors.secondary,
+          },
+          ".gatsby-highlight, code[class*='language-'], pre[class*='language']": {
+            borderRadius: theme.space[1],
+          },
         },
       })}
     />
