@@ -47,18 +47,22 @@ const Footer = () => {
   const social = [
     {
       target: `https://dev.to/${data.twitter}`,
+      label: "follow me on Dev.to",
       icon: faDev,
     },
     {
       target: `https://twitter.com/${data.twitter}`,
+      label: "follow me on Twitter",
       icon: faTwitter,
     },
     {
       target: `https://codepen.io/${data.codepen}`,
+      label: "see code samples on Codepen",
       icon: faCodepen,
     },
     {
       target: `https://linkedin.com/in/${data.linkedin}`,
+      label: "find me on LinkedIn",
       icon: faLinkedinIn,
     },
   ]
@@ -66,7 +70,11 @@ const Footer = () => {
   return (
     <StyledFooter>
       {social.map(item => (
-        <ExternalLink target={item.target} key={item.target}>
+        <ExternalLink
+          target={item.target}
+          key={item.target}
+          aria-label={item.label}
+        >
           <FontAwesomeIcon icon={item.icon} />
         </ExternalLink>
       ))}
