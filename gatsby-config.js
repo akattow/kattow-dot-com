@@ -3,7 +3,6 @@ module.exports = {
     title: `kattow.dev`,
     description: `UI developer and accessibility advocate`,
     siteUrl: `https://kattow.dev`,
-    image: `/content/images/kat-illo.png`,
     author: `Kat Tow`,
     twitter: `akattow`,
     linkedin: `kattow`,

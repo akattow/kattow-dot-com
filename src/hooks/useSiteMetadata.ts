@@ -4,7 +4,6 @@ interface SiteMeta {
   defaultDescription?: string
   defaultTitle: string
   siteUrl: string
-  image?: string
   author?: string
   twitter?: string
 }
@@ -17,7 +16,6 @@ const useSiteMetadata = () => {
           defaultTitle: title
           defaultDescription: description
           siteUrl
-          image
           author
           twitter
         }

@@ -2,6 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 
 import useSiteMetadata from "../../hooks/useSiteMetadata"
+import { useStaticQuery, graphql } from "gatsby"
 
 interface ISEO {
   lang?: string
@@ -22,10 +23,24 @@ const SEO: React.FC<ISEO> = ({
 }) => {
   const siteMeta = useSiteMetadata()
 
+  const data = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "kat-illo.png" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 300, quality: 100) {
+            src
+          }
+        }
+      }
+    }
+  `)
+
+  const defaultImage = data.image.sharp ? data.image.sharp.fluid.src : ""
+
   const seo = {
     title: pageTitle || siteMeta.defaultTitle,
     description: pageDescription || siteMeta.defaultDescription,
-    image: `${siteMeta.siteUrl}${image || siteMeta.image}`,
+    image: image || defaultImage,
     url: `${siteMeta.siteUrl}${pathname || "/"}`,
   }
 
