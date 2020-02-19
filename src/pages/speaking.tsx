@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
 import { Section } from "../components/layout/shared"
 import { SecretUl, ExternalLink } from "../components/utils"
+import { getDateRange } from "../utils/dates"
 
 const Speak: React.FC = () => {
   const events: Event[] = useSpeaking()
@@ -18,7 +19,7 @@ const Speak: React.FC = () => {
 
   return (
     <Layout>
-      <SEO pageTitle="Speaking" />
+      <SEO pageTitle="Speaking" pathname="/speaking" />
       <Section>
         <h1>speaking</h1>
         <p>
@@ -46,45 +47,6 @@ const Speak: React.FC = () => {
 }
 
 export default Speak
-
-interface DateOptions {
-  year?: string
-  month?: string
-  day?: string
-}
-
-const getFormattedDate = (
-  date: Date,
-  options: DateOptions = { month: "long", day: "numeric" },
-  locale = "en-US"
-) => date.toLocaleDateString(locale, options)
-
-const getDateRange = (startString: string, endString: string) => {
-  const startDate = new Date(startString)
-  const endDate = new Date(endString)
-
-  startDate.setUTCHours(startDate.getTimezoneOffset() / 60)
-  endDate.setUTCHours(endDate.getTimezoneOffset() / 60)
-
-  // is multi-day?
-  const oneDayEvent = startString === endString
-
-  // span months?
-  const sameMonth = startDate.getMonth() === endDate.getMonth()
-
-  const start = getFormattedDate(startDate)
-  if (oneDayEvent)
-    return `${start}, ${getFormattedDate(startDate, { year: "numeric" })}`
-
-  if (sameMonth && !oneDayEvent)
-    return `${start}-${getFormattedDate(endDate, {
-      day: "numeric",
-    })}, ${getFormattedDate(endDate, { year: "numeric" })}`
-
-  return `${start} - ${getFormattedDate(endDate)}, ${getFormattedDate(endDate, {
-    year: "numeric",
-  })}`
-}
 
 const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
   const date = getDateRange(event.startDate, event.endDate)
