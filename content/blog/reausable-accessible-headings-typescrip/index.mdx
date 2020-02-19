@@ -1,0 +1,138 @@
+---
+title: Reusable, accessible headings in React with TypeScript
+slug: reusable-accessible-headings
+draft: true
+---
+
+Making reusable components is one of the best things about React. Developers write less duplicate code, and our sites and apps can have a more consistent UI. This is good!
+
+Making content clear and logical to both screen readers and web parsers is also a good thing. Among other things, that means that heading elements (`h1` - `h6`) need to appear in order. To learn more about why this matters, [read Fen Slattery's excellent article on HTML headings](https://dev.to/sublimemarch/html-headings-not-just-big-bigger-biggest-1km).
+
+Both of those things are important, but they don't always work together well. Working with components introduces the risk of disorganized headings. A component may be used in two places, with each page hierarcy demanding different heading levels. And as a project grows in size, a change to a component in one place may have unintended consequences in others.
+
+What might that look like? Something like this:
+
+```jsx
+const Banner = ({ headingText, description }) => (
+  <div>
+    <h1>{headingText}</h1>
+    <p>{description}</p>
+  </div>
+)
+```
+
+That component could be a problem if you ever want to use it elsewhere in your app. Let's say you use the `Banner` on one page, and it has your `h1`. But what about later, when you want to use it halfway down a different page? One where the `h1` element already exists? An `h2` or `h3` might be the right choice in that case. Whether you've got a banner, a card, or any other piece of UI that might need a heading, **you should make it flexible.**
+
+How do we do that? React magic! Let's make a reusable heading component that can accept props for the heading level it should render. Then we can use our flexible heading component in our `Banner`.
+
+## A reusable JavaScript header
+
+If you search the web for flexible react heading components, you might find something like this:
+
+```tsx
+// a JavaScript flexible heading element
+const JsHeading = ({ headingLevel }) => {
+  const Heading = headingLevel
+  return <Heading>{children}</Heading>
+}
+
+// our reusable banner
+const Banner = ({ headingText, description }) => (
+  <div>
+    <JsHeading headingLevel="h2">{headingText}</JsHeading>
+    <p>{description}</p>
+  </div>
+)
+```
+
+That's great... for regular JavaScript. In fact, [Suzanne Aitchison has a great post on this as well](https://www.upyoura11y.com/reusable-components-with-headers/). If you're **not** using TypeScript, I'd recommend reading her article. She ends with some valuable ideas on how to prevent unwanted behavior.
+
+## But what about TypeScript?
+
+The title of this article is 'Reusable, accessible headings in React with TypeScript' - and the code above won't work in TypeScript. Even if you try adding explicit types, you won't get too far.
+
+You might try casting your input, but I wouldn't recommend it. You'll end up casting to `unknown` in between and it's just gross. Besides, why cast when you can properly type everything to begin with? But, what types do we need?
+
+You might think we should pass an heading element directly as a prop. I'm afraid we can't do that, Dave. You'll get an error if you try to directly pass an `HTMLHeadingElement` as a prop. The most flexible type you can pass in is `React.ElementType`. Let's take a look:
+
+```tsx
+// extend your interface to be sure your heading element can have stuff like a className and children
+interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  headingLevel: React.ElementType
+}
+
+const TsHeading: React.FC<HeadingProps> = ({
+  headingLevel,
+  children,
+  className,
+}) => {
+  const Heading = headingLevel
+  return <Heading className={className}>{children}</Heading>
+}
+
+// our reusable banner
+const Banner: React.FC<{ headingText: string; description: string }> = ({
+  headingText,
+  description,
+}) => (
+  <div>
+    <TsHeading headingLevel="h2">{headingText}</TsHeading>
+    <p>{description}</p>
+  </div>
+)
+```
+
+Cool! Great! This works, and it renders just fine. Except... you can now pass in any element to your `<Heading />` element.
+
+```tsx
+const Banner: React.FC<{ headingText: string; description: string }> = ({
+  headingText,
+  description,
+}) => (
+  <div>
+    <TsHeading headingLevel="table">{headingText}</TsHeading>
+    <p>{description}</p>
+  </div>
+)
+```
+
+We can pass in a `table` and it won't give us an error - in fact, it will render to the page as `<table>Whatever text you passed</table>`.
+
+## Just the headings, please
+
+So what's a safe way to ensure you only pass heading elements to your reusable `<Heading />`? This one took me a while to get right. I won't bore you with all my trials, tribulations, and failures - here's what I found that works.
+
+```tsx
+// the interface needs to explicitly declare which strings are safe to pass
+interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p"
+}
+
+const TsHeading = ({
+  headingLevel = "p",
+  children,
+  className,
+}: HeadingProps) => {
+  const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
+    React.createElement(headingLevel, props, children)
+
+  return <Heading className={className}>{children}</Heading>
+}
+
+const Banner: React.FC<{ headingText: string; description: string }> = ({
+  headingText,
+  description,
+}) => (
+  <div>
+    <TsHeading headingLevel="h2">{headingText}</TsHeading>
+    <p>{description}</p>
+  </div>
+)
+```
+
+So what's going on here? Two things:
+
+1. we need to explicitly tell the interface which strings (representing html elements) we want to accept. You might notice I've included "p" - this is a fallback, in case you want to use this element without a heading. You can adapt this to match your needs!
+2. Our `Heading` just got more complex. Because we can't directly pass an HTML heading element to a React component as a prop, we instead need to pass a (valid) string, and use that in React's `createElement` method. `React.createElement` is actually how JSX works under the hood, but that's a totally different topic.
+
+And that's it! Now you can use your heading component in any other reusable, composable component. Go forth and create accessible websites!
