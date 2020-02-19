@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import useSiteMetadata from "../hooks/useSiteMetadata"
 
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
@@ -39,8 +38,6 @@ const ImageWrapper: React.FC = ({ children }) => (
 )
 
 const IndexPage: React.FC = () => {
-  const data = useSiteMetadata()
-
   return (
     <Layout>
       <SEO pageTitle="Home" />

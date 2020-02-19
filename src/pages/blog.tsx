@@ -14,7 +14,7 @@ const Blog: React.FC = () => {
 
   return (
     <Layout>
-      <SEO pageTitle="Blog" />
+      <SEO pageTitle="Blog" pathname="/blog" />
       <Section>
         <h1>blog</h1>
         {posts.map(post => (

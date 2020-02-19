@@ -2,6 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `kattow.dev`,
     description: `UI developer and accessibility advocate`,
+    siteUrl: `https://kattow.dev`,
+    image: `/content/images/kat-illo.png`,
     author: `Kat Tow`,
     twitter: `akattow`,
     linkedin: `kattow`,
@@ -14,6 +16,15 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-yaml`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: "https://kattow.dev",
+        sitemap: "https://kattow.dev/sitemap.xml", // do this
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -49,7 +60,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `kattow-dot-com`,
-        short_name: `kattow`,
+        short_name: `Kat Tow`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

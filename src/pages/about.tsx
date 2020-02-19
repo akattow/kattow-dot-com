@@ -12,7 +12,7 @@ const About: React.FC = () => {
 
   return (
     <Layout>
-      <SEO pageTitle="About" />
+      <SEO pageTitle="About" pathname="/about" />
       <Section>
         <h1>about me</h1>
         <p>
