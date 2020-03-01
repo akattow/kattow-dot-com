@@ -6,7 +6,7 @@ import useSpeaking from "../hooks/useSpeaking"
 
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
-import { Section } from "../components/layout/shared"
+import { Section, FlexRow } from "../components/layout/shared"
 import { SecretUl, ExternalLink } from "../components/utils"
 import { getDateRange } from "../utils/dates"
 
@@ -60,9 +60,29 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
         marginBottom: [4],
       }}
     >
-      <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
+      <strong>
+        <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
+      </strong>
       <p>{event.title}</p>
-      <span>{date}</span>
+      <EventDetail>{date}</EventDetail>
+      <EventDetail>{event.location}</EventDetail>
+      {event.slides && (
+        <EventDetail>
+          <a href={event.slides}>Slides</a>
+        </EventDetail>
+      )}
     </li>
   )
 }
+
+const EventDetail: React.FC = ({ children }) => (
+  <span
+    sx={{
+      minWidth: "20%",
+      mr: 4,
+      fontSize: 2,
+    }}
+  >
+    {children}
+  </span>
+)
