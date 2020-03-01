@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `kattow.dev`,
-    description: `UI developer and accessibility advocate`,
+    description: `UX developer and accessibility advocate`,
     siteUrl: `https://kattow.dev`,
     author: `Kat Tow`,
     twitter: `akattow`,
@@ -20,7 +20,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: "https://kattow.dev",
-        sitemap: "https://kattow.dev/sitemap.xml", // do this
+        sitemap: "https://kattow.dev/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },

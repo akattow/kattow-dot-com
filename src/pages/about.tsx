@@ -16,9 +16,9 @@ const About: React.FC = () => {
       <Section>
         <h1>about me</h1>
         <p>
-          I’m a web developer in Milwaukee, WI. I'm passionate about web
-          accessibility. I like building things with React. I enjoy vanilla CSS,
-          Sass, and CSS-in-JS (
+          I’m a UX/front-end developer in Milwaukee, WI. I'm passionate about
+          web accessibility. I like building things with React and Typescript. I
+          enjoy vanilla CSS, Sass, and CSS-in-JS (
           <span role="img" aria-label="styled components">
             💅
           </span>{" "}
