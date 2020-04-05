@@ -6,7 +6,7 @@ import useSpeaking from "../hooks/useSpeaking"
 
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
-import { Section, FlexRow } from "../components/layout/shared"
+import { Section } from "../components/layout/shared"
 import { SecretUl, ExternalLink } from "../components/utils"
 import { getDateRange } from "../utils/dates"
 
