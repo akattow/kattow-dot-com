@@ -9,6 +9,14 @@ import { Section } from "../components/layout/shared"
 import useBlog from "../hooks/useBlog"
 import { Link } from "gatsby"
 
+const sortPosts = (posts: BlogPost[]) => {
+  return posts.sort((a, b) => {
+    if (Date.parse(a.publishDate) < Date.parse(b.publishDate)) return 1
+    if (Date.parse(a.publishDate) > Date.parse(b.publishDate)) return -1
+    return 0
+  })
+}
+
 const Blog: React.FC = () => {
   const posts: BlogPost[] = useBlog()
 
@@ -17,7 +25,7 @@ const Blog: React.FC = () => {
       <SEO pageTitle="Blog" pathname="/blog" />
       <Section>
         <h1>blog</h1>
-        {posts.map(post => (
+        {sortPosts(posts).map(post => (
           <BlogListing post={post} key={post.slug} />
         ))}
       </Section>
