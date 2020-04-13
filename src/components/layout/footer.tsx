@@ -14,19 +14,23 @@ import { ExternalLink } from "../utils"
 const StyledFooter: React.FC = ({ children }) => (
   <footer
     sx={{
-      fontSize: [4],
       px: [3, 4, 5, 6],
       py: 3,
+      display: "flex",
+      flexWrap: "wrap",
+      alignContent: "center",
       "> *": {
+        mt: 0,
         mx: [2, 3, 4, 5],
-        "&:first-of-type": {
+        "&:first-child": {
           ml: 0,
         },
-        "&:last-of-type": {
+        "&:last-child": {
           mr: 0,
         },
       },
       a: {
+        fontSize: [4],
         mt: 0,
         backgroundSize: `100% 0`,
         "&:hover, &:focus": {
@@ -69,6 +73,7 @@ const Footer = () => {
 
   return (
     <StyledFooter>
+      <small sx={{ alignSelf: "center" }}>&copy; 2020 Kat Tow</small>
       {social.map(item => (
         <ExternalLink
           target={item.target}
