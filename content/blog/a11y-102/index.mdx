@@ -1,0 +1,129 @@
+---
+title: "Intro to A11y: Where and How"
+slug: intro-to-a11y-where-how
+draft: false
+publishDate: 2020-04-13
+---
+
+_This is the second article in a 2-part series. Read the first half: [A11y 101: What, Who, and Why](/blog/intro-to-a11y-what-who-why)._
+
+And a few notes before we get started:
+
+- a11y is a [_numeronym_](https://en.wikipedia.org/wiki/Numeronym) for accessibility. These two words will be used interchangeably throughout.
+- the correct linguistic choice between person-first and identity-first language (e.g., a person with a disability vs. a disabled person) is **the choice an individual or community prefers**. Since this article covers disability very broadly, it will use both person-first and identity-first language.
+
+The [first article](/blog/intro-to-a11y-what-who-why) covered the what, who, and why of web accessibility. Let's dive into how you can get started, and where to learn more.
+
+## What you can do to get started
+
+Web accessibility is not new. The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/) were first established in 1999, over 20 years ago. Despite this, accessibility has a reputation for being extraordinarily difficult to implement. It doesn't have to be.
+
+The most important thing to understand when getting started is that you won't go from zero to hero. Websites take time and expertise to design and develop, and the same is true when updating them.
+
+The first step is to identify your website's most critical paths. What do users absolutely need to be able to accomplish on your site? In [Domino's case](https://www.cnbc.com/2019/10/07/dominos-supreme-court.html), their most critical path was for users to order a pizza through their website, but their site disabled some users from doing so. Ensuring these critical paths are accessible will reduce your liability. The next step is to continue identifying and improving issues incrementally.
+
+### Common problems
+
+For developers and designers new to accessibility, it can be hard to even know what a11y issues to look for. Here are a few of the most common problems:
+
+#### Readable text
+
+Make sure all your website's text [meets minimum contrast thresholds](https://webaim.org/resources/contrastchecker/). Additionally, [avoid using only color](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast-without-color) to identify information or tools (e.g., links), and be sure [text is resizable](https://lifehacker.com/how-to-zoom-in-and-out-on-a-web-page-5815125).
+
+#### Text alternatives
+
+Anything essential that isn't text needs a text alternative. Every image that conveys important meaning to the user needs alt text. For example, images of products for sale should have descriptive alt text. Images that don't convey meaning should have _empty alt tags_. Why? Because without an empty alt tag (`alt=""`) screen readers will announce the entire filename (`cute_dogs_102919_prod_final2.jpg`). Video and audio need text alternatives as well.
+
+#### Descriptive and accessible links and buttons
+
+Make sure that all interactive elements contain text or alt text that informs users what that link or button will do. Additionally, all links, buttons, and other interactive elements must be reachable using a keyboard (more on this below).
+
+#### Label your forms
+
+Forms are typically part of a critical user path. Whether it's a form to sign up or order pizza, forms are critical to most sites. Recent design trends have put some forms in hot water by removing `label` elements in favor of things like `placeholder` attributes. Screen readers won't announce `placeholder`s, so be sure every form element has a corresponding `label`.
+
+#### Be chill
+
+Check your website for flashing or fast animations and movement (I'm looking at you, auto-playing video banners). This kind of content can cause reactions as severe as seizures, and as common as motion sickness. If the content must stay, be sure you warn users and make it easy to stop playing, and take advantage of the [`prefers-reduced-motion` CSS media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
+### Detecting issues
+
+Now you know what to look for, but... do you have to manually audit every single page for all of those issues? Thankfully, you do not; there are several tools to help you streamline and even automate parts of accessibility auditing.
+
+Note: **none of these tools are sufficient on their own or together.** They will make your audits easier, but some manual testing will always be necessary to ensure your site is accessible.
+
+#### Linting
+
+Linting is a great way to prevent a11y bugs before they hit production. If you're writing React, you should check out [`eslint-plugin-jsx-a11y`](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) to statically check your JSX elements. Regardless of your stack, you can also use [`pa11y`](https://github.com/pa11y/pa11y) in the command line to audit an entire site.
+
+#### Automated tests
+
+In-browser testing automates a lot of checks for you - these tools will find common errors like insufficient color contrast, missing alt text, duplicate landmarks, and more. Two of my favorites are [axe](https://www.deque.com/axe/), which is available as a Chrome extension and for Android testing, and [WAVE](https://wave.webaim.org), which has a web app, Chrome and Firefox extensions, and API services.
+
+If you're looking to level up, you can also look into adding accessibility checks into your unit, integration, and end-to-end tests. Most popular test runners have accessibility packages or tools you can use to incorporate some automated checks.
+
+#### Tab testing
+
+Tab testing is manual but fairly low-effort. Open up your site in a browser and start hitting the tab key! (To go backward, hit shift+tab.) You should:
+
+- Be able to reach every interactive element on the page (links, buttons, form elements, etc.)
+- Be able to visually see which element is in focus
+- The order in which you reach elements should make sense
+
+Take note of any difficulties you experience (missing focus styles are the most common) so that you can investigate and remediate those problems later.
+
+#### Content analysis
+
+Content analysis is often overlooked in accessibility recommendations. Especially for developers, it can be all too easy to focus on testing and remediating a11y issues that we can fix in code. For cognitive and neurally disabled users, ensuring content accessibility makes a big difference. Most of this process must be manual, like ensuring that link text is descriptive (no more 'Click here' links). Some of it can be assisted - writing editors like [Hemmingway](http://www.hemingwayapp.com) (free!) and [Grammarly](https://www.grammarly.com) (freemium) can help your team ensure your content itself is more accessible.
+
+#### Screen reader testing
+
+Screen reader testing can be very intimidating, especially for those just getting started. For anyone new to accessibility, I recommend just choosing one screen reader (SR) software that works on your existing OS. Get comfortable with one tool and with the process of using a screen reader before you go for 'full coverage' SR testing.
+
+The most popular screen reader combinations are:
+
+- [NVDA](https://www.nvaccess.org) + Firefox or Chrome (Windows)
+- [JAWS](https://www.freedomscientific.com/Products/software/JAWS/) + Chrome (Windows)
+- [VoiceOver](https://www.apple.com/accessibility/mac/vision/) + Safari
+
+If you are testing mobile, you'll use want to use [Voiceover](https://help.apple.com/iphone/11/#/iph3e2e415f) on iOS with mobile Safari, or [Talkback](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=3529932) on Android with mobile Chrome.
+
+** All of these screen readers are free **except JAWS\*\*, which does require an annual license.
+
+As you prepare to start testing, the [WebAIM Screen Reader Survey #8 (2019)](https://webaim.org/projects/screenreadersurvey8/) can help you understand how people use screen readers. And when you do get started, you can [use these keyboard shortcut cheatsheets](https://dequeuniversity.com/screenreaders/) to navigate using your keyboard.
+
+This process may uncover behaviors that confuse you. Some behavior may not be what you were expecting, but is it what disabled users are expecting? The best way to find out is by conducting user testing.
+
+#### User testing
+
+User testing helps you ensure your project actually works. It's more reliable than any manual or automated tests you can perform. (Note: don't waste your testers time - test and remediate smaller issues first!)
+
+Whether you aren't doing any user testing yet at all or have a robust user research practice, it's important to include users with disabilities. If you need help recruiting disabled users, there are a few companies that can help:
+
+- [Fable Tech Labs](https://www.makeitfable.com)
+- [Accessible 360](https://accessible360.com)
+- [AccessWorks](https://access-works.com)
+
+## How to learn more
+
+Like any subject in web design and development, there's a lot of deep learning and expertise you can pursue in web accessibility. You may be looking to broaden your understanding (e.g., with Inclusive Design) or deepen your knowledge (e.g., _really_ understanding ARIA).
+
+Personally, I am still learning a ton about accessibility. There's plenty I still don't understand, and a lot I could do to improve my testing practice. Right now, I've integrated linting, in-browser audits, and two screen readers into my regular toolkit. At my job, I'm currently working on adding more a11y to our unit and end-to-end tests.
+
+As you continue to learn about web accessibility, it's important to remember that this isn't the wild west. The Web Content Accessibility Guidelines (WCAG) were established over 20 years ago and was updated as recently as 2018. The documentation can be intimidating to read, but it's important to remember that there are guidelines, expected behavior, and testable practices.
+
+As for resources: the following list is **far from complete**, but it includes some of my favorite resources that are great for getting started. These have been tremendously helpful in my journey to learn about a11y - I hope they help you too!
+
+If you have any favorite resources I should add, [let me know on Twitter](https://twitter.com/akattow)!
+
+- [Web Accessibility Initiative at the W3C](https://www.w3.org/WAI/)
+- [Tools and Techniques](https://www.w3.org/WAI/people-use-web/tools-techniques/)
+- [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [The A11y Project](https://a11yproject.com/)
+  - [The A11y Project's Web Accessibility Checklist](https://a11yproject.com/checklist/)
+- [Accessibility for Teams](https://accessibility.digital.gov)
+- [Microsoft Inclusive Design Toolkit](https://www.microsoft.com/design/inclusive/)
+- [Inclusive Design Principles](https://inclusivedesignprinciples.org)
+- [Designing For Accessibility And Inclusion](https://www.smashingmagazine.com/2018/04/designing-accessibility-inclusion/)
+- Free course: [Google's Web Accessibility on Udacity](https://www.udacity.com/course/web-accessibility--ud891)
+- International a11y standards: [Current State of International Accessibility Standards](https://www.levelaccess.com/current-state-of-international-accessibility-standards/)
