@@ -18,6 +18,8 @@ const useSiteMetadata = () => {
           siteUrl
           author
           twitter
+          linkedin
+          codepen
         }
       }
     }
