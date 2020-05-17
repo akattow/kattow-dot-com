@@ -6,6 +6,8 @@ interface SiteMeta {
   siteUrl: string
   author?: string
   twitter?: string
+  codepen?: string
+  linkedin?: string
 }
 
 const useSiteMetadata = () => {
