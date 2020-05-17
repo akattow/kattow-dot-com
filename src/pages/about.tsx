@@ -16,13 +16,13 @@ const About: React.FC = () => {
       <Section>
         <h1>about me</h1>
         <p>
-          I’m a UX/front-end developer in Milwaukee, WI. I'm passionate about
-          web accessibility. I like building things with React and Typescript. I
+          I’m a frontend developer in Milwaukee, WI. I'm passionate about web
+          accessibility. I like building things with React and Typescript. I
           enjoy vanilla CSS, Sass, and CSS-in-JS (
           <span role="img" aria-label="styled components">
             💅
           </span>{" "}
-          and/or{" "}
+          and{" "}
           <span role="img" aria-label="Emotion">
             👩‍🎤
           </span>
@@ -75,9 +75,9 @@ const About: React.FC = () => {
           <div>
             <h3>ask me about</h3>
             <ul>
-              <li>Being an all-state mime</li>
-              <li>Living in Japan</li>
               <li>My pug, Mochi</li>
+              <li>Living in Japan</li>
+              <li>Being an all-state mime</li>
             </ul>
           </div>
         </div>
