@@ -14,8 +14,12 @@ const Speak: React.FC = () => {
   const events: Event[] = useSpeaking()
   const today = new Date()
 
-  const futureEvents = events.filter(event => new Date(event.endDate) >= today)
-  const pastEvents = events.filter(event => new Date(event.endDate) < today)
+  const futureEvents = events.filter(
+    event => new Date(event.endDate) >= today || event.tbd
+  )
+  const pastEvents = events.filter(
+    event => new Date(event.endDate) < today && !event.tbd
+  )
 
   return (
     <Layout>
@@ -64,7 +68,11 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
         <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
       </strong>
       <p>{event.title}</p>
-      <EventDetail>{date}</EventDetail>
+      {event.tbd ? (
+        <EventDetail>Postponed due to COVID-19</EventDetail>
+      ) : (
+        <EventDetail>{date}</EventDetail>
+      )}
       <EventDetail>{event.location}</EventDetail>
       {event.slides && (
         <EventDetail>
