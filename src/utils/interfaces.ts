@@ -3,6 +3,7 @@ export interface Event {
   eventSite: string
   startDate: string
   endDate: string
+  tbd: boolean
   location: string
   type: string
   title: string
