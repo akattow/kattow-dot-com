@@ -6,7 +6,7 @@
   location: Milwaukee, WI
   type: Talk
   title: "Intro to Accessibility"
-  slides: https://intro-to-accessibility.netlify.com/
+  slides: https://intro-to-accessibility.netlify.app
 
 - eventName: Milwaukee JS
   eventSite: https://www.meetup.com/milwaukeejs/
@@ -15,6 +15,7 @@
   location: Milwaukee, WI
   type: Talk
   title: "Accessibility in Single-Page Applications"
+  slides: https://spa-a11y.netlify.app
 
 - eventName: Open Source North
   eventSite: https://www.opensourcenorth.com/
