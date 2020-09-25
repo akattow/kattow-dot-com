@@ -9,7 +9,7 @@ const useSpeaking = () => {
           eventSite
           startDate
           endDate
-          tbd
+          cancelled
           location
           type
           title
