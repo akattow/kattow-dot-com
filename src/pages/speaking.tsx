@@ -14,12 +14,21 @@ const Speak: React.FC = () => {
   const events: Event[] = useSpeaking()
   const today = new Date()
 
-  const futureEvents = events.filter(
-    event => new Date(event.endDate) >= today || event.tbd
-  )
-  const pastEvents = events.filter(
-    event => new Date(event.endDate) < today && !event.tbd
-  )
+  const futureEvents = events
+    .filter(event => new Date(event.endDate) >= today)
+    .sort((a, b) => {
+      if (a.startDate > b.startDate) return -1
+      if (a.startDate < b.startDate) return 1
+      return 0
+    })
+
+  const pastEvents = events
+    .filter(event => new Date(event.endDate) < today || event.cancelled)
+    .sort((a, b) => {
+      if (a.startDate > b.startDate) return -1
+      if (a.startDate < b.startDate) return 1
+      return 0
+    })
 
   return (
     <Layout>
@@ -27,10 +36,9 @@ const Speak: React.FC = () => {
       <Section>
         <h1>speaking</h1>
         <p>
-          I'm still looking for additional speaking opportunities in 2020! If
-          you'd like to hear about web accessibility or building good habits as
-          a developer, <a href={`mailto:kattow88@gmail.com`}>reach out</a> and
-          let me know!
+          If you'd like to hear about web accessibility or building good habits
+          as a developer, <a href={`mailto:kattow88@gmail.com`}>reach out</a>{" "}
+          and let me know!
         </p>
         <br />
         <h2>upcoming speaking</h2>
@@ -68,8 +76,8 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
         <ExternalLink target={event.eventSite}>{event.eventName}</ExternalLink>
       </strong>
       <p>{event.title}</p>
-      {event.tbd ? (
-        <EventDetail>Postponed due to COVID-19</EventDetail>
+      {event.cancelled ? (
+        <EventDetail>Cancelled due to COVID-19</EventDetail>
       ) : (
         <EventDetail>{date}</EventDetail>
       )}
