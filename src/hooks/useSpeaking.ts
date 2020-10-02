@@ -14,6 +14,7 @@ const useSpeaking = () => {
           type
           title
           slides
+          withNotes
         }
       }
     }
