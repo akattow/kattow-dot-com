@@ -8,6 +8,7 @@ export interface Event {
   type: string
   title: string
   slides: string
+  withNotes: string
 }
 
 export interface BlogPost {

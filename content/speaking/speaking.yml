@@ -25,6 +25,7 @@
   location: Bloomington, MN
   type: Talk
   title: "Accessibility in Single-Page Applications"
+  slides: https://spa-a11y.netlify.app
 
 - eventName: Central Wisconsin IT Conference
   eventSite: https://cwitc.org
@@ -33,3 +34,5 @@
   location: Online
   type: Keynote
   title: "The Internet is for Everyone"
+  slides: "/the-internet-is-for-everyone-slides-only.pdf"
+  withNotes: "/the-internet-is-for-everyone-with-notes.pdf"

@@ -87,6 +87,11 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
           <a href={event.slides}>Slides</a>
         </EventDetail>
       )}
+      {event.withNotes && (
+        <EventDetail>
+          <a href={event.withNotes}>Slides with speaker notes</a>
+        </EventDetail>
+      )}
     </li>
   )
 }
