@@ -36,3 +36,12 @@
   title: "The Internet is for Everyone"
   slides: "/the-internet-is-for-everyone.pdf"
   withNotes: "/the-internet-is-for-everyone-with-notes.pdf"
+
+- eventName: Scenic City Summit
+  eventSite: https://sceniccitysummit.com/
+  startDate: 2020-11-06
+  endDate: 2020-11-06
+  location: Online
+  type: Talk
+  title: "Accessibility in Single-Page Applications"
+  slides: https://spa-a11y.netlify.app
