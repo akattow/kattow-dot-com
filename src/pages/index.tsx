@@ -48,14 +48,10 @@ const IndexPage: React.FC = () => {
           }}
         >
           <h1>Hi, I'm Kat</h1>
-          <p>I'm a web developer and illustrator in Milwaukee, WI.</p>
+          <p>I'm a web developer in Milwaukee, WI.</p>
           <p>
             I like to <Link to="/blog">write</Link> and{" "}
-            <Link to="/speaking">speak</Link> about web accessibility.
-          </p>
-          <p>
-            I'm also proud to be a leader of the Milwaukee chapter of{" "}
-            <ExternalLink target="https://wepivot.org/">We Pivot</ExternalLink>.
+            <Link to="/speaking">speak</Link> about frontend web development.
           </p>
         </div>
 

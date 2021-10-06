@@ -37,7 +37,7 @@ const Speak: React.FC = () => {
         <h1>speaking</h1>
         <p>
           If you'd like to hear about web accessibility or building good habits
-          as a developer, <a href={`mailto:kattow88@gmail.com`}>reach out</a>{" "}
+          as a developer, <a href={`mailto:hello@kattow.dev`}>reach out</a>{" "}
           and let me know!
         </p>
         <br />

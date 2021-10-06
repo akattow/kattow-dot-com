@@ -1,7 +1,7 @@
 {
   "name": "kattow-dot-com",
   "private": false,
-  "description": "Personal site of a web developer and illustrator. 🦄",
+  "description": "Personal site of a web developer in Milwaukee, WI.",
   "version": "0.1.0",
   "author": "@akattow",
   "dependencies": {
