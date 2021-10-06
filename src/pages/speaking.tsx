@@ -40,12 +40,16 @@ const Speak: React.FC = () => {
           and let me know!
         </p>
         <br />
-        <h2>upcoming speaking</h2>
-        <SecretUl>
-          {futureEvents.map((event: Event) => (
-            <SpeakingEvent event={event} key={event.startDate} />
-          ))}
-        </SecretUl>
+        {futureEvents.length > 0 && (
+          <>
+            <h2>upcoming speaking</h2>
+            <SecretUl>
+              {futureEvents.map((event: Event) => (
+                <SpeakingEvent event={event} key={event.startDate} />
+              ))}
+            </SecretUl>
+          </>
+        )}
         <h2>past speaking</h2>
         <SecretUl>
           {pastEvents.map((event: Event) => (
