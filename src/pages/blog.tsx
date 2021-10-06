@@ -5,9 +5,9 @@ import { BlogPost } from "../utils/interfaces"
 
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
-import { Section } from "../components/layout/shared"
 import useBlog from "../hooks/useBlog"
 import { Link } from "gatsby"
+import { Section, SecretUl, ContentDetail } from "../components/utils"
 
 const sortPosts = (posts: BlogPost[]) => {
   return posts.sort((a, b) => {
@@ -25,9 +25,11 @@ const Blog: React.FC = () => {
       <SEO pageTitle="Blog" pathname="/blog" />
       <Section>
         <h1>blog</h1>
+        <SecretUl>
         {sortPosts(posts).map(post => (
           <BlogListing post={post} key={post.slug} />
         ))}
+        </SecretUl>
       </Section>
     </Layout>
   )
@@ -36,33 +38,22 @@ const Blog: React.FC = () => {
 export default Blog
 
 const BlogListing: React.FC<{ post: BlogPost }> = ({ post }) => (
-  <article
+  <li
     sx={{
-      "*": {
+      "> *": {
         marginTop: 0,
-        marginBottom: [1],
       },
-      marginTop: [5],
+      marginBottom: [4],
     }}
   >
-    <Link to={`/blog/${post.slug}`} sx={{ fontSize: [4] }}>
-      {post.title}
-    </Link>
-    <div
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        "> span": {
-          marginTop: 0,
-          marginRight: [4],
-          "&:last-of-type": {
-            marginRight: 0,
-          },
-        },
-      }}
-    >
-      <span>{post.publishDate}</span>
-      <span>{post.timeToRead} min read</span>
+    <strong>
+      <Link to={`/blog/${post.slug}`}>
+        {post.title}
+      </Link>
+    </strong>
+    <div>
+      <ContentDetail>{post.publishDate}</ContentDetail>
+      <ContentDetail>{post.timeToRead} min read</ContentDetail>
     </div>
-  </article>
+  </li>
 )

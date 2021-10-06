@@ -21,7 +21,7 @@ const StyledFooter: React.FC = ({ children }) => (
       alignContent: "center",
       "> *": {
         mt: 0,
-        mx: [2, 3, 4, 5],
+        mx: 3,
         "&:first-child": {
           ml: 0,
         },
@@ -47,6 +47,8 @@ const StyledFooter: React.FC = ({ children }) => (
 const Footer = () => {
   const data = useSiteMetadata()
 
+  const date = new Date();
+
   const social = [
     {
       target: `https://twitter.com/${data.twitter}`,
@@ -62,7 +64,7 @@ const Footer = () => {
 
   return (
     <StyledFooter>
-      <small sx={{ alignSelf: "center" }}>&copy; 2020 Kat Tow</small>
+      <small sx={{ alignSelf: "center" }}>&copy; {date.getFullYear()} Kat Tow</small>
       {social.map(item => (
         <ExternalLink
           target={item.target}
