@@ -6,8 +6,7 @@ import useSpeaking from "../hooks/useSpeaking"
 
 import Layout from "../components/layout"
 import SEO from "../components/layout/seo"
-import { Section } from "../components/layout/shared"
-import { SecretUl, ExternalLink } from "../components/utils"
+import { Section, SecretUl, ExternalLink, ContentDetail } from "../components/utils"
 import { getDateRange } from "../utils/dates"
 
 const Speak: React.FC = () => {
@@ -77,33 +76,23 @@ const SpeakingEvent: React.FC<{ event: Event }> = ({ event }) => {
       </strong>
       <p>{event.title}</p>
       {event.cancelled ? (
-        <EventDetail>Cancelled due to COVID-19</EventDetail>
+        <ContentDetail>Cancelled due to COVID-19</ContentDetail>
       ) : (
-        <EventDetail>{date}</EventDetail>
+        <ContentDetail>{date}</ContentDetail>
       )}
-      <EventDetail>{event.location}</EventDetail>
+      <ContentDetail>{event.location}</ContentDetail>
       {event.slides && (
-        <EventDetail>
+        <ContentDetail>
           <a href={event.slides}>Slides</a>
-        </EventDetail>
+        </ContentDetail>
       )}
       {event.withNotes && (
-        <EventDetail>
+        <ContentDetail>
           <a href={event.withNotes}>Slides with speaker notes</a>
-        </EventDetail>
+        </ContentDetail>
       )}
     </li>
   )
 }
 
-const EventDetail: React.FC = ({ children }) => (
-  <span
-    sx={{
-      minWidth: "20%",
-      mr: 4,
-      fontSize: 2,
-    }}
-  >
-    {children}
-  </span>
-)
+

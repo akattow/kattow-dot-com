@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import React from "react"
 
-import { Section } from "../components/layout/shared"
+import { Section } from "../components/utils"
 
 const ImportantDetails: React.FC = () => {
   return (
@@ -10,6 +10,9 @@ const ImportantDetails: React.FC = () => {
       <h2>important details</h2>
       <div
         sx={{
+          "h3": {
+            mb: 0
+          },
           display: "grid",
           gridTemplateColumns: ["1f", "1fr", "1fr", "1fr 1fr"],
           "> *": {
